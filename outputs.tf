@@ -31,6 +31,7 @@ output "domain" {
 output "clients" {
   description = "All Cognito User Pool Client resources associated with the Cognito User Pool."
   value       = { for client in aws_cognito_user_pool_client.client : client.name => merge(client, { client_secret = null }) }
+  sensitive   = true
 }
 
 output "client_secrets" {
